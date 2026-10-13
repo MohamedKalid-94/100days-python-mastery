@@ -1,0 +1,39 @@
+<!-- contact.html - the form itself, reused for both empty and error states -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us</title>
+</head>
+<body>
+    <h1>Contact Us</h1>
+
+    <!-- Show validation errors if any were passed in from main.py -->
+    <!-- if-check works because errors defaults to None on a normal GET request -->
+    {% if errors %}
+        <ul style="color: red;">
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- method="POST" tells the browser to send this as a POST request -->
+    <!-- action="/" means it submits back to the same route -->
+    <form method="POST" action="/">
+        <label for="name">Name:</label><br>
+        <!-- name="name" is what request.form.get("name") reads on the server -->
+        <!-- value="{{ name }}" re-fills the field if the form is re-shown after an error -->
+        <input type="text" id="name" name="name" value="{{ name }}"><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" value="{{ email }}"><br><br>
+
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="40">{{ message }}</textarea><br><br>
+
+        <button type="submit">Send Message</button>
+    </form>
+
+    <p><a href="/messages">View all submitted messages</a></p>
+</body>
+</html>

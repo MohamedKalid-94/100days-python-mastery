@@ -1,0 +1,24 @@
+<!-- messages.html - a simple admin-style view of all submitted messages -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Messages</title>
+</head>
+<body>
+    <h1>Submitted Messages</h1>
+
+    {% if messages|length == 0 %}
+        <p>No messages submitted yet.</p>
+    {% endif %}
+
+    {% for msg in messages %}
+        <div>
+            <p><strong>{{ msg.name }}</strong> ({{ msg.email }})</p>
+            <p>{{ msg.message }}</p>
+        </div>
+        <hr>
+    {% endfor %}
+
+    <a href="/">Back to contact form</a>
+</body>
+</html>
