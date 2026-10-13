@@ -1,0 +1,33 @@
+<!-- index.html - the home page listing all blog posts -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ site_name }}</title>
+    <!-- Double curly braces are Jinja2 syntax for inserting a Python variable's value into HTML -->
+</head>
+<body>
+    <h1>{{ site_name }}</h1>
+    <p>Welcome to my personal blog, built with Flask templates.</p>
+
+    <hr>
+
+    <!-- Curly-brace-percent tags are Jinja2 syntax for logic: loops, conditionals, etc. -->
+    <!-- Looping through the 'posts' list passed in from main.py -->
+    {% for post in posts %}
+        <div>
+            <h2><a href="/post/{{ post.id }}">{{ post.title }}</a></h2>
+            <p>By {{ post.author }}</p>
+            <!-- showing only the first 50 characters as a preview -->
+            <p>{{ post.content[:50] }}...</p>
+        </div>
+        <hr>
+    {% endfor %}
+
+    <!-- Conditional: show a message if there are no posts at all -->
+    {% if posts|length == 0 %}
+        <p>No blog posts yet.</p>
+    {% endif %}
+
+    <p><a href="/about">About this blog</a></p>
+</body>
+</html>
