@@ -1,0 +1,38 @@
+<!-- users.html - shows all users stored in the database -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registered Users</title>
+</head>
+<body>
+    <h1>Registered Users</h1>
+
+    {% if users|length == 0 %}
+        <p>No users registered yet.</p>
+    {% endif %}
+
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+        <!-- Accessing columns by NAME thanks to row_factory = sqlite3.Row in main.py -->
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    <form method="POST" action="/user/delete/{{ user.id }}" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <p><a href="/">Register another user</a></p>
+</body>
+</html>

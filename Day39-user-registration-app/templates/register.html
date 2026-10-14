@@ -1,0 +1,37 @@
+<!-- register.html - the registration form -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+</head>
+<body>
+    <h1>Create an Account</h1>
+
+    <!-- Show validation or database errors if any were passed in -->
+    <!-- Using "if errors" works since errors defaults to None on a normal GET -->
+    <!-- (avoiding literal curly-brace tags inside comments this time!) -->
+
+    {% if errors %}
+        <ul style="color: red;">
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="POST" action="/">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" value="{{ username }}"><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" value="{{ email }}"><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <p><a href="/users">View all registered users</a></p>
+</body>
+</html>
