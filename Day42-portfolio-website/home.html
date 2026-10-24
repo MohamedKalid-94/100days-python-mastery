@@ -1,0 +1,17 @@
+<!-- home.html - extends base.html instead of repeating the full page structure -->
+{% extends "base.html" %}
+
+{% block title %}My Portfolio - Home{% endblock %}
+
+{% block content %}
+    <h1>My Portfolio</h1>
+    <p>A collection of projects from my 100 Days of Python journey.</p>
+
+    {% for project in projects %}
+        <div class="project-card">
+            <a href="/project/{{ project.id }}">{{ project.title }}</a>
+            <p>{{ project.description }}</p>
+            <p><em>Tech: {{ project.tech }}</em></p>
+        </div>
+    {% endfor %}
+{% endblock %}

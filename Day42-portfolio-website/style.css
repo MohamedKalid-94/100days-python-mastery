@@ -1,0 +1,46 @@
+/* style.css - a static file, served automatically by Flask from the 'static' folder */
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 0 20px;
+    background-color: #f7f7f7;
+    color: #222;
+}
+
+h1 {
+    color: #2c3e50;
+}
+
+.project-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.project-card a {
+    text-decoration: none;
+    color: #2980b9;
+    font-weight: bold;
+}
+
+nav a {
+    margin-right: 15px;
+    color: #2980b9;
+    text-decoration: none;
+}
+
+form input, form textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.error-list {
+    color: #c0392b;
+}

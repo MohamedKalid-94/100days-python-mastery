@@ -1,0 +1,24 @@
+<!-- base.html - a LAYOUT template that other pages extend, instead of
+     repeating the same head/nav/footer HTML in every single template -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My Portfolio{% endblock %}</title>
+    <!-- url_for("static", filename=...) builds the correct path to a static file -
+         always use this instead of hardcoding "/static/css/style.css" directly,
+         since url_for adapts automatically if the app's setup ever changes -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/contact">Contact</a>
+    </nav>
+    <hr>
+
+    <!-- block content - child templates fill THIS section in with their own content -->
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>
